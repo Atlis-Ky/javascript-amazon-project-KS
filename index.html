@@ -43,7 +43,7 @@
 
         <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
-          <div class="cart-quantity js-cart-quantity">0</div>
+          <div class="cart-quantity js-cart-quantity" id="cart-quantity">0</div>
           <div class="cart-text">Cart</div>
         </a>
       </div>
@@ -55,5 +55,15 @@
     </div>
 
     <script type="module" src="scripts/amazon.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fetch cart data from local storage or backend
+        const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        // Update cart quantity
+        const cartQuantityElement = document.getElementById('cart-quantity');
+        cartQuantityElement.textContent = cartData.length;
+      });
+    </script>
   </body>
 </html>
